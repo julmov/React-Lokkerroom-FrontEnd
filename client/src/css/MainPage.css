@@ -1,0 +1,205 @@
+
+.mainPage{
+    width: 100%;
+    margin: 5px;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.topBox{
+margin: 0;
+padding-left: 10px;
+width: calc(100% - 15px);
+height: 40px;
+color: black;
+font-style: italic;
+border-radius: 5px;
+border: 1px solid white;
+background-color: rgba(255, 255, 255, 0.662);
+box-shadow: 0px 5px 25px rgba(0, 0, 0, 1.7); 
+}
+
+.boxes{
+    display: flex;
+    flex-direction: row;
+   
+}
+.leftBox{
+   width: 320px; 
+   height: 540px;
+   margin: 0;
+   border-radius: 5px;
+border: 1px solid white;
+background-color: rgba(255, 255, 255, 0.662);
+box-shadow: 0px 5px 25px rgba(0, 0, 0, 1.7); 
+display: block;
+}
+
+.lobbyList{
+    height: 440px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+ul {
+  list-style-type: none; /* Makes list markers (bullets) invisible */
+   margin: 0;
+    padding: 0;
+    width: 300px;
+}
+
+li{
+    border: 1px solid rgb(245, 237, 237);
+    width: 100%;
+     margin: 5px;
+    padding: 5px;
+    height: 40px;
+    width: 260px;
+    border-radius: 15px;
+
+}
+
+.iconBox{
+width: 310px; 
+height: 65px;
+   margin: 0;
+  border-radius: 5px 5px 0 0;
+  background-color: aliceblue;
+border: 1px solid white;
+color: black;
+padding: 5px;
+
+}
+
+.icons{
+    padding: 20px;
+}
+
+.middleBox{
+display: flex;
+flex-direction: column;
+   width: 550px; 
+   height: 540px;
+   margin: 0;
+   border-radius: 5px;
+border: 1px solid white;
+background-color: rgba(255, 255, 255, 0.662);
+box-shadow: 0px 5px 25px rgba(0, 0, 0, 1.7); 
+}
+
+.roomNameBox{
+  width: 550px; 
+height: 65px;
+   margin: 0;
+  border-radius: 5px 5px 0 0;
+  background-color: aliceblue;
+border: 1px solid white;  
+}
+
+.MessageBox{
+  width: 550px; 
+height: 395px;
+   margin: 0;
+  background-color: aliceblue;
+border: 1px solid white;
+display: block;
+}
+
+.inputBox{
+      width: 550px; 
+height: 65px;
+   margin: 0;
+  border-radius:  0 0 5px 5px;
+  background-color: aliceblue;
+border: 1px solid white;  
+}
+
+.rightBox{
+background-color: aliceblue;
+margin: 0;
+   width: 300px; 
+   height: 540px;
+   border-radius: 5px;
+border: 1px solid white;
+background-color: rgba(255, 255, 255, 0.662);
+box-shadow: 0px 5px 25px rgba(0, 0, 0, 1.7); 
+}
+
+.inputMessage{
+    width: 440px;
+    margin: 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+    
+}
+
+.sendButton{
+   margin: 10px;
+   margin-right: 20px; 
+   width: 40px;
+   color: black;
+   border: none;
+   background: none;
+   font-size: 22px;
+}
+
+
+.myMessages{
+    color: black;
+    border: 2px solid white;
+    margin: 5px;
+    padding: 10px;
+    background-color: rgba(178, 193, 212, 0.662);
+    width: fit-content;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.userIcon{
+    border: 1px solid white;
+    padding: 5px;
+    margin: 5px;
+    background-color: aliceblue;
+    border-radius: 50%;
+}
+
+.usersList{
+    display: block;
+    width: 200px;
+   
+}
+
+
+.createLobbyBox{
+    display: block;
+}
+
+.sendMessageBox{
+    display: block;
+}
+
+.usersLi{
+    align-items: center;
+    padding: 10px;
+    display: flex;
+    justify-items: center;
+}
+
+.roomName{
+    color: black;
+}
+
+.settings{
+    display: block;
+}

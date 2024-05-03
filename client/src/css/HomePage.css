@@ -1,0 +1,47 @@
+
+
+.home-page{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 400px;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.413);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    border: 1px solid white;
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 1.7); 
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center ;
+}
+
+.login, .register {
+text-decoration: none;
+color: black;
+margin: 30px;
+background-color: white;
+font-size: 18px;
+border: solid 1px rgb(245, 242, 242);
+border-radius: 5px;
+padding: 5px;
+height: 20px;
+padding-left: 15px;
+padding-right: 15px;
+display: flex;
+align-items: center;
+}
+
+.login p, .register p{
+margin: 5;
+}
+
+.login:hover, .register:hover {
+    color: black;
+  background-color: rgba(255, 255, 255, 0.667);
+}
