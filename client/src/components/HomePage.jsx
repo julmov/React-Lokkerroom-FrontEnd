@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 import "../App.css";
-import "../css/HomePage.css"
-import { Link } from 'react-router-dom';
+import "../css/HomePage.css";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
+    <div className="Home">
       <div className="home-page">
         <h1>Salut my friend!</h1>
         <h2>You can login or create new account</h2>
@@ -17,9 +18,8 @@ function HomePage() {
           </Link>
         </div>
       </div>
-  
+    </div>
   );
 }
 
 export default HomePage;
-

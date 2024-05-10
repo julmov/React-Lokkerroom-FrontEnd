@@ -1,47 +1,60 @@
-
-
-.home-page{
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    height: 400px;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.413);
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 8px;
-    border: 1px solid white;
-    box-shadow: 0px 5px 25px rgba(0, 0, 0, 1.7); 
+.Home {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.links{
-    display: flex;
-    flex-direction: row;
-    justify-content: center ;
+.home-page {
+  background: rgb(42, 77, 193);
+  background: linear-gradient(
+    90deg,
+    rgba(42, 77, 193, 1) 0%,
+    rgba(86, 152, 226, 1) 50%,
+    rgba(147, 91, 202, 1) 100%
+  );
+
+  border: 1px inset lightblue;
+  box-shadow: 1px 1px 1px black;
+  width: 600px;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
 }
 
-.login, .register {
-text-decoration: none;
-color: black;
-margin: 30px;
-background-color: white;
-font-size: 18px;
-border: solid 1px rgb(245, 242, 242);
-border-radius: 5px;
-padding: 5px;
-height: 20px;
-padding-left: 15px;
-padding-right: 15px;
-display: flex;
-align-items: center;
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.login p, .register p{
-margin: 5;
+.login,
+.register {
+  text-decoration: none;
+  color: black;
+  margin: 30px;
+  background-color: white;
+  font-size: 18px;
+  border: solid 1px rgb(245, 242, 242);
+  border-radius: 5px;
+  padding: 5px;
+  height: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
 }
 
-.login:hover, .register:hover {
-    color: black;
+.login p,
+.register p {
+  margin: 5;
+}
+
+.login:hover,
+.register:hover {
+  color: black;
   background-color: rgba(255, 255, 255, 0.667);
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 import "../css/LoginPage.css";
-import "../index.css"; 
+import "../index.css";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -36,43 +36,45 @@ const LoginForm = () => {
       console.log("Data fetched");
 
       // Redirect to Welcome page if login is successful
-        if (response.ok && data.token) {
-          // Save the token to localStorage
+      if (response.ok && data.token) {
+        // Save the token to localStorage
         localStorage.setItem("token", JSON.stringify({ token: data.token }));
         console.log("Token saved to localStorage:", data.token);
 
-          navigate("/main"); // Use navigate function
-        }
+        navigate("/main"); // Use navigate function
+      }
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   return (
-    <div className="loginPage">
-      <form onSubmit={handleSubmit} className="loginForm">
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+    <div className="Login">
+      <div className="loginPage">
+        <form onSubmit={handleSubmit} className="loginForm">
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 };

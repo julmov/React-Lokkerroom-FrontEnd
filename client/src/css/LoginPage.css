@@ -1,36 +1,84 @@
-
-.loginPage{
-    width: 100%;
-    height: auto;
-    display: flex;
+.Login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
   align-items: center;
-    margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-}
-.loginForm{
-
-   width: 300px;
-   height: auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-     padding: 20px;
-     margin-left: auto;
-     margin-right: auto;
-      border-radius: 8px;
-    border: 1px solid white;
-    background-color: rgba(255, 255, 255, 0.413);
-    box-shadow: 0px 5px 25px rgba(0, 0, 0, 1.7); 
-}
-div{
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
-    
+  position: relative;
 }
 
-.registerBtn{
-    margin-top: 20px;
+.loginPage {
+  border: 1px inset lightblue;
+  box-shadow: 1px 1px 1px black;
+  width: 300px;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
 }
 
+@keyframes blink {
+  25% {
+    background: rgb(42, 77, 193);
+    background: linear-gradient(
+      90deg,
+      rgba(42, 77, 193, 1) 0%,
+      rgba(86, 152, 226, 1) 50%,
+      rgba(147, 91, 202, 1) 100%
+    );
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+.loginPage {
+  animation: blink 5s linear infinite;
+  transition: background-color 0.5s ease;
+}
+.loginForm {
+  width: 280px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px inset white;
+  background-color: rgba(255, 255, 255, 0.413);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 1.7);
+}
+div {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.registerBtn {
+  margin-top: 20px;
+}
+
+.loginForm div {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+input {
+  height: 30px;
+  outline: none;
+  background-color: transparent;
+  border: 1px inset #333;
+}
+button {
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  margin-left: 170px;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.413);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 1.2);
+  border: none;
+}
