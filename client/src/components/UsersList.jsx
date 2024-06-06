@@ -1,11 +1,8 @@
-// LobbyList.jsx
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-  faUser
-} from "@fortawesome/free-solid-svg-icons";
-const UsersList = () => {
+const UsersList = ({ onUserSelect }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -21,15 +18,15 @@ const UsersList = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to fetch messages");
+          throw new Error("Failed to fetch users");
         }
         return response.json();
       })
       .then((data) => {
-        setUsers(data); // Set the messages from the API response
+        setUsers(data);
       })
       .catch((error) => {
-        console.error("Error fetching messages:", error);
+        console.error("Error fetching users:", error);
       });
   }, []);
 
@@ -38,8 +35,11 @@ const UsersList = () => {
       <h2>Users</h2>
       <ul>
         {users.map((user) => (
-          <li key={user.username} className="usersLi">
-            {" "}
+          <li
+            key={user.id}
+            className="usersLi"
+            onClick={() => onUserSelect(user)}
+          >
             <FontAwesomeIcon icon={faUser} className="userIcon" />
             {user.username}
           </li>

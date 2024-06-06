@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const RecieveMessage = ({ senderId, receiverId }) => {
+const RecieveMessage = () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -11,11 +11,12 @@ const RecieveMessage = ({ senderId, receiverId }) => {
         const tokenValue = token1.token;
 
         const response = await fetch(
-          `https://secret-bayou-22282-49e42fb604f5.herokuapp.com/api/messages/${senderId}/${receiverId}`,
+          `https://secret-bayou-22282-49e42fb604f5.herokuapp.com/api/direct-messages`,
           {
             method: "GET",
             headers: {
               Authorization: `Bearer ${tokenValue}`,
+              "Content-Type": "application/json",
             },
           }
         );
@@ -32,20 +33,12 @@ const RecieveMessage = ({ senderId, receiverId }) => {
     };
 
     fetchMessages();
-  }, [senderId, receiverId]); 
+  }, []); // Empty dependency array to run only once on component mount
 
   return (
     <div>
       <h2>Received Messages</h2>
-      <ul>
-        {messages.map((message) => (
-          <li key={message.id}>
-            <strong>Sender:</strong> {message.sender_id},{" "}
-            <strong>Receiver:</strong> {message.receiver_id},{" "}
-            <strong>Content:</strong> {message.message_content}
-          </li>
-        ))}
-      </ul>
+      <p>{messages.length > 0 ? messages[0] : "No messages found"}</p>
     </div>
   );
 };

@@ -1,135 +1,171 @@
 import React, { useState, useEffect } from "react";
 import "../css/MainPage.css";
-import { Link } from "react-router-dom"; 
+import "../css/messages.css";
+import "../css/LobbyList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPaperPlane
-} from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 import IconBox from "./IconBox";
 import UsersList from "./UsersList";
-
 import LobbyList from "./LobbyList";
 import RecieveMessage from "./RecieveMessage";
-import SendMessage from "./SendMessage";
 import CreateLobby from "./CreateLobby";
 import SettingsContent from "./SettingsContent";
+import DirectMessage from "./DirectMessage";
 
 const MainPage = () => {
-   const [roomName, setRoomName] = useState("");
+  const [roomName, setRoomName] = useState("");
+  const [selectedLobbyId, setSelectedLobbyId] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-   const [activeContent, setActiveContent] = useState("lobby");
+  const [activeContent, setActiveContent] = useState("lobby");
 
-     const updateRoomName = (name) => {
-       setRoomName(name);
-     };
+  const currentUser = { id: 1 }; // Replace with actual current user ID
+
+  const updateRoom = (name, id) => {
+    setRoomName(name);
+    setSelectedLobbyId(id);
+    setSelectedUser(null); // Reset selected user when a lobby is selected
+  };
+
+  const handleUserSelect = (user) => {
+    setSelectedUser(user);
+    setSelectedLobbyId(null); // Reset selected lobby when a user is selected
+  };
 
   useEffect(() => {
-   let token = localStorage.getItem("token");
-   let token1 = JSON.parse(token);
-   let tokenValue = token1.token;
-   
-
-    fetch(
-      "https://secret-bayou-22282-49e42fb604f5.herokuapp.com/api/messages",
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${tokenValue}`,
-        },
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch messages");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setMessages(data); // Set the messages from the API response
-      })
-      .catch((error) => {
-        console.error("Error fetching messages:", error);
-      });
-  }, []); // Empty dependency array to run the effect only once on mount
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (selectedLobbyId) {
       let token = localStorage.getItem("token");
       let token1 = JSON.parse(token);
       let tokenValue = token1.token;
-   if (!newMessage.trim()) {
-     console.error("Error: Message cannot be empty.");
-     return; // Exit the function if the message is empty
-   }
+
+      fetch(
+        "https://secret-bayou-22282-49e42fb604f5.herokuapp.com/api/messages",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${tokenValue}`,
+          },
+        }
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch messages");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setMessages(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching messages:", error);
+        });
+    }
+  }, [selectedLobbyId]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let token = localStorage.getItem("token");
+    let token1 = JSON.parse(token);
+    let tokenValue = token1.token;
+
+    if (!newMessage.trim() || !selectedLobbyId) {
+      console.error("Error: Message or lobby ID cannot be empty.");
+      return;
+    }
+
     try {
       const response = await fetch(
-        "https://secret-bayou-22282-49e42fb604f5.herokuapp.com/api/messages/new",
+        `https://secret-bayou-22282-49e42fb604f5.herokuapp.com/api/lobby/${selectedLobbyId}`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${tokenValue}`,
           },
-          body: JSON.stringify({ content: newMessage }),
+          body: JSON.stringify({
+            content: newMessage,
+          }),
         }
       );
-      const data = await response.json();
-      console.log(data); // Handle the response data as needed
 
-      // Clear the input field after sending the message
+      if (!response.ok) {
+        throw new Error("Failed to post message to lobby");
+      }
+
+      const data = await response.json();
       setNewMessage("");
+      // Optionally, fetch messages again or add the new message to the state
     } catch (error) {
       console.error("Error sending message:", error);
-     
     }
   };
 
   return (
     <div className="mainPage">
-     
       <div className="boxes">
         <div className="leftBox">
           <IconBox setActiveContent={setActiveContent} />
           <div className="contentBox">
-            {/* Render content based on activeContent state */}
-            {activeContent === "lobby" && (
-              <LobbyList updateRoomName={updateRoomName} />
-            )}
+            {activeContent === "lobby" && <LobbyList updateRoom={updateRoom} />}
             {activeContent === "receive" && <RecieveMessage />}
-            {activeContent === "send" && <SendMessage />}
+            {activeContent === "send" && (
+              <UsersList onUserSelect={handleUserSelect} />
+            )}
             {activeContent === "create" && <CreateLobby />}
             {activeContent === "settings" && <SettingsContent />}
           </div>
         </div>
         <div className="middleBox">
-          <div className="roomNameBox">
-            <h2 className="roomName">{roomName}</h2>
-          </div>
-          <div className="MessageBox">
-            {/* Display messages fetched from API */}
-            {messages.map((message) => (
-              <div key={message.id} className="myMessages">
-                {message.content}
+          {selectedLobbyId ? (
+            <>
+              <div className="roomNameBox">
+                <h2 className="roomName">{roomName}</h2>
               </div>
-            ))}
-          </div>
-          <div className="inputBox">
-            <input
-              type="text"
-              className="inputMessage"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
+              <div className="MessageBox">
+                {messages
+                  .filter((message) => message.lobby_id === selectedLobbyId)
+                  .map((message) => (
+                    <div key={message.id} className="myMessages">
+                      <div className="name-and-stamp">
+                        <p id="username">{message.username}</p>
+                        <p id="timestamp">
+                          {message.timestamp.slice(0, 10) +
+                            " at " +
+                            message.timestamp.slice(11, 16)}
+                        </p>
+                      </div>
+                      <p id="message-content">{message.content}</p>
+                    </div>
+                  ))}
+              </div>
+              <div className="inputBox">
+                <input
+                  type="text"
+                  className="inputMessage"
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                />
+                <button
+                  type="submit"
+                  className="sendButton"
+                  onClick={handleSubmit}
+                >
+                  <FontAwesomeIcon icon={faPaperPlane} />
+                </button>
+              </div>
+            </>
+          ) : selectedUser ? (
+            <DirectMessage
+              selectedUser={selectedUser}
+              currentUser={currentUser}
             />
-
-            <button type="submit" className="sendButton" onClick={handleSubmit}>
-              <FontAwesomeIcon icon={faPaperPlane} />
-            </button>
-          </div>
-        </div>
-        <div className="rightBox">
-          <UsersList />
+          ) : (
+            <div className="welcomeMessage">
+              Select a lobby or user to start chatting
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -18,10 +18,12 @@
      padding: 20px;
      margin-left: auto;
      margin-right: auto;
-      border-radius: 8px;
-    border: 1px solid white;
-    background-color: rgba(255, 255, 255, 0.413);
-    box-shadow: 0px 5px 25px rgba(0, 0, 0, 1.7); 
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
 }
 div{
     display: flex;
@@ -34,3 +36,66 @@ div{
     margin-top: 20px;
 }
 
+.linkTo{
+  font-size: 13px;
+  text-align: center;
+}
+
+.input-items{
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field{
+  background: none;
+  border: none;
+  border-bottom: 1px solid white;
+  height: 25px;
+}
+
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* Style placeholder text if needed */
+}
+
+.input-field:focus {
+  border-bottom-color: white; /* Ensure the border color remains the same on focus */
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #615277 inset !important; /* Background color */
+  -webkit-text-fill-color: white !important; /* Text color */
+  border: none;
+  border-bottom: 1px solid white; /* Border color */
+}
+
+input:-webkit-autofill::first-line {
+  font-size: 16px;
+  color: white;
+}
+
+input:-webkit-autofill:focus {
+ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+
+}
+
+input:-moz-autofill {
+  box-shadow: 0 0 0 30px #615277 inset !important; /* Background color */
+  color: white !important; /* Text color */
+  border-bottom: 1px solid white; /* Border color */
+  border-radius: 15px;
+}
+
+input:-ms-autofill {
+  box-shadow: 0 0 0 30px #615277 inset !important; /* Background color */
+  color: white !important; /* Text color */
+  border-bottom: 1px solid white; /* Border color */
+}
+
+input:-o-autofill {
+  box-shadow: 0 0 0 30px #615277 inset !important; /* Background color */
+  color: white !important; /* Text color */
+  border: none;
+  border-bottom: 1px solid white; /* Border color */
+}

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import "../css/LobbyList.css";
 
-const LobbyList = ({ updateRoomName }) => {
+const LobbyList = ({ updateRoom }) => {
   const [lobbies, setLobbies] = useState([]);
 
   const handleLobbyClick = (lobby) => {
-    updateRoomName(lobby.lobby_name); // Update room name when lobby is clicked
+    updateRoom(lobby.lobby_name, lobby.id); // Pass lobby name and ID when clicked
   };
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const LobbyList = ({ updateRoomName }) => {
       })
       .then((data) => {
         setLobbies(data); // Set the lobbies from the API response
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching lobbies:", error);
@@ -38,9 +40,9 @@ const LobbyList = ({ updateRoomName }) => {
   return (
     <div className="lobbyList">
       <h2>Lobbies</h2>
-      <ul>
+      <ul className="lobby-list-ul">
         {lobbies.map((lobby) => (
-          <li key={lobby.id} onClick={() => handleLobbyClick(lobby)}>
+          <li key={lobby.id} onClick={() => handleLobbyClick(lobby)} id="lobby">
             {lobby.lobby_name}
           </li>
         ))}

@@ -1,0 +1,42 @@
+
+
+.myMessages{
+    color: black;
+    border: 2px solid white;
+    margin: 5px;
+    padding: 10px;
+    background-color: rgba(178, 193, 212, 0.662);
+    width: fit-content;
+    border-radius: 25px;
+    justify-content: space-between;
+   
+        display: flex;
+    flex-direction: column;
+}
+
+#username{
+    font-size: 10px;
+}
+
+#timestamp{
+    font-size: 10px;
+    margin-left: 10px;
+}
+
+.name-and-stamp{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 0;
+   height: 11px;
+  margin-top: 0;
+}
+
+#message-content{
+    margin-top: 0;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
