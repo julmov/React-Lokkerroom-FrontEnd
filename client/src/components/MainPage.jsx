@@ -3,8 +3,7 @@ import "../css/MainPage.css";
 import "../css/messages.css";
 import "../css/LobbyList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-
+import { faPaperPlane, faSmile } from "@fortawesome/free-solid-svg-icons";
 import IconBox from "./IconBox";
 import UsersList from "./UsersList";
 import LobbyList from "./LobbyList";
@@ -12,6 +11,7 @@ import RecieveMessage from "./RecieveMessage";
 import CreateLobby from "./CreateLobby";
 import SettingsContent from "./SettingsContent";
 import DirectMessage from "./DirectMessage";
+import EmojiPicker from "emoji-picker-react";
 
 const MainPage = () => {
   const [roomName, setRoomName] = useState("");
@@ -20,18 +20,35 @@ const MainPage = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [activeContent, setActiveContent] = useState("lobby");
+  const [emojiPickerVisible, setEmojiPickerVisible] = useState(false);
 
   const currentUser = { id: 1 }; // Replace with actual current user ID
 
   const updateRoom = (name, id) => {
     setRoomName(name);
     setSelectedLobbyId(id);
-    setSelectedUser(null); // Reset selected user when a lobby is selected
+    setSelectedUser(null);
   };
 
   const handleUserSelect = (user) => {
     setSelectedUser(user);
-    setSelectedLobbyId(null); // Reset selected lobby when a user is selected
+    setSelectedLobbyId(null);
+  };
+
+  const onEmojiClick = (emojiData, event) => {
+    // Log the emojiData to understand its structure
+    console.log(emojiData);
+
+    // Handle the emoji based on its structure
+    if (emojiData && emojiData.emoji) {
+      setNewMessage(newMessage + emojiData.emoji);
+    } else {
+      console.error(
+        "Emoji object structure has changed or is invalid",
+        emojiData
+      );
+    }
+    setEmojiPickerVisible(false);
   };
 
   useEffect(() => {
@@ -148,12 +165,24 @@ const MainPage = () => {
                   onChange={(e) => setNewMessage(e.target.value)}
                 />
                 <button
+                  type="button"
+                  className="smileButton"
+                  onClick={() => setEmojiPickerVisible(!emojiPickerVisible)}
+                >
+                  <FontAwesomeIcon icon={faSmile} />
+                </button>
+                <button
                   type="submit"
                   className="sendButton"
                   onClick={handleSubmit}
                 >
                   <FontAwesomeIcon icon={faPaperPlane} />
                 </button>
+                {emojiPickerVisible && (
+                  <div className="emojiPicker">
+                    <EmojiPicker onEmojiClick={onEmojiClick} />
+                  </div>
+                )}
               </div>
             </>
           ) : selectedUser ? (

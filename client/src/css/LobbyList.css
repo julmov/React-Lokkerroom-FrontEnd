@@ -21,7 +21,8 @@
 
 #lobby{
 
-    border: 1px solid rgb(245, 237, 237);
+    border: none;
+    background-color: rgb(54, 54, 54);;
     width: 100%;
      margin: 5px;
     padding: 5px;
@@ -30,6 +31,9 @@
     border-radius: 15px;
     margin-top: 0;
     display: flex;
+    font-size: 18px;
     justify-content: flex-start;
+    padding-left: 20px;
+   padding-top: 13px;
 }
 

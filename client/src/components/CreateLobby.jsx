@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../css/CreateLobby.css";
 
 const CreateLobby = () => {
   const [lobbyName, setLobbyName] = useState("");
@@ -51,8 +52,9 @@ const CreateLobby = () => {
           value={lobbyName}
           onChange={(e) => setLobbyName(e.target.value)}
           placeholder="Enter lobby name"
+          className="input-lobby"
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className="button-create">Submit</button>
       </form>
     </div>
   );

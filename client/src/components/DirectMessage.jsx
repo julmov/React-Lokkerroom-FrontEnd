@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faSmile } from "@fortawesome/free-regular-svg-icons";
 
 const DirectMessage = ({ selectedUser, currentUser }) => {
   const [messages, setMessages] = useState([]);
@@ -109,6 +110,9 @@ const DirectMessage = ({ selectedUser, currentUser }) => {
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
         />
+        <button className="smileButton">
+          <FontAwesomeIcon icon={faSmile} />
+        </button>
         <button
           type="submit"
           className="sendButton"

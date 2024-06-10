@@ -82,7 +82,10 @@ const RegisterForm = () => {
           />
         </div>
         <p className="linkTo">
-          Already have an account? <Link to="/login">Log in here.</Link>
+          Already have an account?{" "}
+          <Link to="/login" className="link-login-register">
+            Log in here.
+          </Link>
         </p>
         <button type="submit" className="submitBtn">
           Register

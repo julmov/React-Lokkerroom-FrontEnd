@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import "../css/UsersList.css";
 
 const UsersList = ({ onUserSelect }) => {
   const [users, setUsers] = useState([]);
@@ -33,7 +34,7 @@ const UsersList = ({ onUserSelect }) => {
   return (
     <div className="usersList">
       <h2>Users</h2>
-      <ul>
+      <ul className="usersUl">
         {users.map((user) => (
           <li
             key={user.id}

@@ -3,13 +3,13 @@ import { Navigate } from "react-router-dom";
 
 // Mock authentication function
 const isAuthenticated = () => {
-  // Implement your authentication check logic here
-  // For example, check if a token exists in local storage
-  return localStorage.getItem("token") !== null;
+  // Check if a token exists in local storage
+  const token = localStorage.getItem("token");
+  return token !== null && token !== undefined;
 };
 
-const PrivateRoute = ({ element }) => {
-  return isAuthenticated() ? element : <Navigate to="/login" />;
+const PrivateRoute = ({ children }) => {
+  return isAuthenticated() ? children : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

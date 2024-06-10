@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 15px;
 }
 
 
@@ -14,14 +15,15 @@
     display: flex;
     flex-direction: row;
    justify-content: center;
+   border-radius: 15px;
 }
 .leftBox{
    width: 320px; 
    height: 540px;
    margin: 0;
    
-border: 1px solid white;
-background-color: rgba(255, 255, 255, 0.662);
+border: 1px solid #595959;
+
 box-shadow: 0px 5px 25px rgba(0, 0, 0, 1.7); 
 display: block;
 }
@@ -32,11 +34,10 @@ display: block;
 width: 310px; 
 height: 65px;
    margin: 0;
-  border-radius: 5px 5px 0 0;
-  background-color: aliceblue;
-border: 1px solid white;
-color: black;
+
+color: rgb(194, 191, 191);
 padding: 5px;
+
 
 }
 
@@ -50,27 +51,32 @@ flex-direction: column;
    width: 550px; 
    height: 540px;
    margin: 0;
-border: 1px solid white;
-background-color: rgba(255, 255, 255, 0.662);
+border: 1px solid #595959;
+
 box-shadow: 0px 5px 5px rgba(0, 0, 0, 1.7); 
 }
 
 .roomNameBox{
   width: 550px; 
-height: 65px;
+height: 79x;
    margin: 0;
- 
-  background-color: aliceblue;
-border: 1px solid white;  
+border: 1px solid #595959;  
+}
+
+.roomNameBox h2{
+    color: #bebebe;
+    margin-left: 30px;
+    margin-top: 15px;
 }
 
 .MessageBox{
   width: 550px; 
-height: 395px;
+height: 405px;
    margin: 0;
-  background-color: aliceblue;
-border: 1px solid white;
+background: none;
+border: 1px solid #595959;
 display: block;
+padding-top: 30px;
 }
 
 .inputBox{
@@ -78,8 +84,8 @@ display: block;
 height: 65px;
    margin: 0;
   border-radius:  0 0 5px 5px;
-  background-color: aliceblue;
-border: 1px solid white;  
+  
+border: 1px solid #595959;  
 }
 
 .rightBox{
@@ -98,16 +104,31 @@ box-shadow: 0px 5px 5px rgba(0, 0, 0, 1.7);
     margin: 10px;
     margin-left: 20px;
     border-radius: 10px;
-    
+    background-color: rgb(54, 54, 54);
+    border: none;
+}
+
+.smileButton{
+       margin-top: 10px;
+   margin-bottom: 10px;
+   width: 40px;
+   color: #bebebe;
+   border: none;
+  background: none;
+   border-radius: 10px;
+  
+   font-size: 22px;
 }
 
 .sendButton{
    margin: 10px;
    margin-right: 20px; 
    width: 40px;
-   color: black;
+   color: #bebebe;
    border: none;
    background: none;
+   border-radius: 10px;
+  
    font-size: 22px;
 }
 
@@ -152,3 +173,13 @@ box-shadow: 0px 5px 5px rgba(0, 0, 0, 1.7);
     display: block;
 }
 
+.welcomeMessage{
+    margin-left: 130px;
+    margin-top: 30px;
+}
+
+.emojiPicker{
+    position: absolute;
+    right: 170px;
+    top: 25px;
+}

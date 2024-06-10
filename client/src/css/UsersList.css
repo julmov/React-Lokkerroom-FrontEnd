@@ -1,0 +1,25 @@
+.usersList{
+    width: 100%;
+  
+}
+
+.lobbyHeader{
+    margin-left: 10px;
+}
+
+.usersUl{
+   list-style-type: none; /* Makes list markers (bullets) invisible */
+   margin: 0;
+    padding: 0;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.usersLi{
+    border-bottom: 1px solid #656565;
+    width: 190px;
+    margin-left: 25px;
+}

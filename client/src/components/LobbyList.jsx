@@ -39,7 +39,7 @@ const LobbyList = ({ updateRoom }) => {
 
   return (
     <div className="lobbyList">
-      <h2>Lobbies</h2>
+      <h2 className="lobbyHeader">Lobbies</h2>
       <ul className="lobby-list-ul">
         {lobbies.map((lobby) => (
           <li key={lobby.id} onClick={() => handleLobbyClick(lobby)} id="lobby">

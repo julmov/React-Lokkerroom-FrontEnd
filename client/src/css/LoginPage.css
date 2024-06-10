@@ -63,7 +63,7 @@ div{
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px #615277 inset !important; /* Background color */
+  -webkit-box-shadow: 0 0 0 30px #505050 inset !important; /* Background color */
   -webkit-text-fill-color: white !important; /* Text color */
   border: none;
   border-bottom: 1px solid white; /* Border color */
@@ -81,14 +81,14 @@ input:-webkit-autofill:focus {
 }
 
 input:-moz-autofill {
-  box-shadow: 0 0 0 30px #615277 inset !important; /* Background color */
+  box-shadow: 0 0 0 30px #505050 inset !important; /* Background color */
   color: white !important; /* Text color */
   border-bottom: 1px solid white; /* Border color */
   border-radius: 15px;
 }
 
 input:-ms-autofill {
-  box-shadow: 0 0 0 30px #615277 inset !important; /* Background color */
+  box-shadow: 0 0 0 30px #505050 inset !important; /* Background color */
   color: white !important; /* Text color */
   border-bottom: 1px solid white; /* Border color */
 }
@@ -98,4 +98,8 @@ input:-o-autofill {
   color: white !important; /* Text color */
   border: none;
   border-bottom: 1px solid white; /* Border color */
+}
+
+.link-login-register{
+  color: azure;
 }

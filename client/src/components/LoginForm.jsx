@@ -4,6 +4,7 @@ import "../css/LoginPage.css";
 import "../index.css"; 
 
 
+
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -78,7 +79,7 @@ const LoginForm = () => {
           />
         </div>
         <p className="linkTo">
-          First time visiting? <Link to="/register">Create an account</Link> to
+          First time visiting? <Link to="/register" className="link-login-register">Create an account</Link> to
           join us.
         </p>
         <button type="submit" className="submitBtn">

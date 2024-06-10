@@ -16,22 +16,18 @@ const IconBox = ({ setActiveContent }) => {
   return (
     <div className="iconBox">
       <FontAwesomeIcon
-        icon={faPeopleGroup}
+        icon={faMessage}
         className="icons"
         onClick={() => handleIconClick("lobby")} // Set active content to lobby
       />
-      <FontAwesomeIcon
-        icon={faEnvelope}
-        className="icons"
-        onClick={() => handleIconClick("receive")} // Set active content to receive
-      />
+  
       <FontAwesomeIcon
         icon={faSquarePlus}
         className="icons"
         onClick={() => handleIconClick("create")} // Set active content to send
       />
       <FontAwesomeIcon
-        icon={faMessage}
+        icon={faPeopleGroup}
         className="icons"
         onClick={() => handleIconClick("send")} // Set active content to create
       />
