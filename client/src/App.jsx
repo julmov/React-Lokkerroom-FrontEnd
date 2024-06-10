@@ -11,13 +11,30 @@ import Main from "./components/MainPage";
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
-  console.log("isAuthenticated check, token found:", token); // Debugging line
-  return token !== null && token !== undefined;
+  if (!token || token === "undefined" || token === "null") {
+    return false;
+  }
+
+  try {
+    const { token: jwtToken } = JSON.parse(token);
+    const payload = JSON.parse(atob(jwtToken.split(".")[1]));
+    const isExpired = payload.exp * 1000 < Date.now();
+
+    if (isExpired) {
+      localStorage.removeItem("token");
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Error parsing token:", error);
+    localStorage.removeItem("token");
+    return false;
+  }
 };
 
 const PrivateRoute = ({ children }) => {
   const auth = isAuthenticated();
-  console.log("PrivateRoute, isAuthenticated:", auth); // Debugging line
   return auth ? children : <Navigate to="/login" />;
 };
 
@@ -35,7 +52,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<h1>404 Page not found</h1>}/>
+        <Route path="*" element={<h1>404 Page not found</h1>} />
       </Routes>
     </Router>
   );

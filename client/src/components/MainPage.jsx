@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import "../css/MainPage.css";
 import "../css/messages.css";
 import "../css/LobbyList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane, faSmile } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPaperPlane,
+  faSmile,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import IconBox from "./IconBox";
 import UsersList from "./UsersList";
 import LobbyList from "./LobbyList";
@@ -21,6 +26,8 @@ const MainPage = () => {
   const [newMessage, setNewMessage] = useState("");
   const [activeContent, setActiveContent] = useState("lobby");
   const [emojiPickerVisible, setEmojiPickerVisible] = useState(false);
+
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const currentUser = { id: 1 }; // Replace with actual current user ID
 
@@ -119,6 +126,12 @@ const MainPage = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email"); // Remove email if stored separately
+    navigate("/login");
+  };
+
   return (
     <div className="mainPage">
       <div className="boxes">
@@ -133,6 +146,9 @@ const MainPage = () => {
             {activeContent === "create" && <CreateLobby />}
             {activeContent === "settings" && <SettingsContent />}
           </div>
+          <button className="logOutBtn" onClick={handleLogout}>
+            Log Out <FontAwesomeIcon icon={faRightFromBracket} />
+          </button>
         </div>
         <div className="middleBox">
           {selectedLobbyId ? (
