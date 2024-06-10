@@ -77,6 +77,12 @@ background: none;
 border: 1px solid #595959;
 display: block;
 padding-top: 30px;
+display: flex;
+flex-direction: column-reverse;
+align-items: flex-start;
+justify-content:flex-start;
+margin-bottom: 5px;
+
 }
 
 .inputBox{
